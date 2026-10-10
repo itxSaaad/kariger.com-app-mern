@@ -1,5 +1,19 @@
 # Kariger.com - Find any Karigers Nearby
 
+## Architecture
+
+```mermaid
+flowchart LR
+  User -->|browse listings and submit application data| Client[React client\nVercel Services: frontend]
+  Client -->|HTTP API requests| Server[Express and Node.js backend\nVercel Services: frontend-backend]
+  Server --> Routes[Application routes and controllers]
+  Routes --> DB[(Application database)]
+  DB --> Routes
+  Routes --> Server
+  Server --> Client
+  Client -->|listing and application response| User
+```
+
 > A MERN Web Application that lets the User to Make Appointments with a Kariger nearby to solve his daily life problems..
 
 <!-- PROJECT LOGO -->
@@ -143,3 +157,8 @@ Give ⭐️ if you like this project!
 [issues-url]: https://github.com/itxSaaad/kariger.com-app-mern/issues
 [license-shield]: https://img.shields.io/github/license/itxSaaad/kariger.com-app-mern.svg?style=for-the-badge
 [license-url]: https://github.com/itxSaaad/kariger.com-app-mern/blob/main/LICENSE.md
+
+## Vercel Deployment
+Vite client frontend/ + Express API backend/server.js. Set Vercel framework to Services. Client currently contains a backend deployment URL; configure VITE_SERVER_URL to this origin and use it in the client before relying on same-origin routing. Configure database/payment values in Vercel.
+See the repository-root [vercel.json](./vercel.json) for build roots and routing. Configure private values in Vercel Project Settings; never commit secrets.
+
