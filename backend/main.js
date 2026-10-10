@@ -23,6 +23,11 @@ dotenv.config();
 connection();
 
 const app = express();
+
+app.get(['/api', '/api/health'], (req, res) => {
+  res.status(200).json({ service: 'kariger-api', status: 'ok' });
+});
+
 // middlewares
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
